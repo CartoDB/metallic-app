@@ -1,0 +1,69 @@
+{
+  "name": "metallic-app",
+  "version": "0.0.0",
+  "description": "Koa application for CARTO services",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CartoDB/metallic-app.git"
+  },
+  "keywords": [
+    "koa",
+    "application",
+    "metallic"
+  ],
+  "author": "Daniel García Aubert <dgaubert@carto.com>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/CartoDB/metallic-app/issues"
+  },
+  "homepage": "https://github.com/CartoDB/metallic-app#readme",
+  "engines": {
+    "node": ">=7.6.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "koa": "~2.1.0",
+    "metallic-errors": "^0.1.1",
+    "metallic-interfaces": "^0.1.0",
+    "node-uuid": "~1.4.7"
+  },
+  "scripts": {
+    "build": "babel src -d lib --source-maps inline",
+    "build:watch": "npm run build -- --watch",
+    "coverage": "istanbul cover _mocha lib/test/ -- --recursive",
+    "lint": "standard \"src/**/*.js\"",
+    "postversion": "git push && git push --tags",
+    "prepublish": "npm run build",
+    "pretest": "npm run lint",
+    "preversion": "npm test",
+    "test": "mocha --recursive -r babel-register -r source-map-support/register test",
+    "test:watch": "npm run test -- -w"
+  },
+  "devDependencies": {
+    "babel-cli": "6.23.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.23.0",
+    "babel-plugin-transform-object-rest-spread": "6.23.0",
+    "istanbul": "0.4.5",
+    "metallic-interfaces": "^0.1.0",
+    "metallic-listeners": "^0.1.0",
+    "metallic-logger": "^0.3.2",
+    "metallic-metrics": "^0.1.0",
+    "mocha": "3.2.0",
+    "sinon": "1.17.7",
+    "source-map-support": "0.4.11",
+    "standard": "9.0.1"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach"
+    ]
+  }
+}
