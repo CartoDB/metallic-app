@@ -8,7 +8,7 @@ import LogMiddleware from './app/middleware/log-middleware'
 import ResponseTimeMiddleware from './app/middleware/response-time-middleware'
 import HttpServer from './http-server'
 
-export default class Factory extends FactoryInterface {
+export default class HttpServerFactory extends FactoryInterface {
   static create (metrics, logger, options = { port: 3000 }) {
     const port = options.port
     const koa = new Koa()
