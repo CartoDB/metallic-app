@@ -9,7 +9,11 @@ import ResponseTimeMiddleware from './app/middleware/response-time-middleware'
 import HttpServer from './http-server'
 
 export default class HttpServerFactory extends FactoryInterface {
-  static create (metrics, logger, options = { port: 3000 }) {
+  static create (metrics, logger, options) {
+    options = {
+      ...options,
+      port: 3000
+    }
     const port = options.port
     const koa = new Koa()
 
