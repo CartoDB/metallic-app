@@ -21,7 +21,7 @@ export default class HttpServer extends RunnerInterface {
       this.httpServer.once('error', err => reject(err))
 
       this.httpServer.once('listening', () => {
-        this.logger.info('Server started on port', this.port)
+        this.logger.info('Server started on port', this.httpServer.address().port)
         resolve(this.httpServer)
       })
     })
