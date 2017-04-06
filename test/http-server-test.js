@@ -27,7 +27,9 @@ describe('server', function () {
   })
 
   it('.run() should listen on specific port successfully', async function () {
+    const port = { port: 0 }
     const httpServerStub = new EventEmitter()
+    httpServerStub.address = () => port
     const appRunStub = this.sandbox.stub(this.app, 'listen').returns(httpServerStub)
     this.logger.info = this.sandbox.spy()
 
@@ -42,7 +44,9 @@ describe('server', function () {
   })
 
   it('.run() should fail when app listening fails', async function () {
+    const port = { port: 0 }
     const httpServerStub = new EventEmitter()
+    httpServerStub.address = () => port
     const appRunStub = this.sandbox.stub(this.app, 'listen').returns(httpServerStub)
 
     setTimeout(() => httpServerStub.emit('error'), 10)
@@ -68,8 +72,10 @@ describe('server', function () {
   })
 
   it('.close() should stop successfully when http-server is listening', async function () {
+    const port = { port: 0 }
     const httpServer = new EventEmitter()
-    httpServer.close = function () {}
+    httpServer.address = () => port
+    httpServer.close = () => {}
     const httpServerStub = this.sandbox.stub(httpServer, 'close').returns(httpServer)
     const appRunStub = this.sandbox.stub(this.app, 'listen').returns(httpServer)
     this.logger.info = this.sandbox.spy()
@@ -89,8 +95,10 @@ describe('server', function () {
   })
 
   it('.close() should fail when http-server also fails', async function () {
+    const port = { port: 0 }
     const httpServer = new EventEmitter()
-    httpServer.close = function () {}
+    httpServer.address = () => port
+    httpServer.close = () => {}
     const httpServerStub = this.sandbox.stub(httpServer, 'close').returns(httpServer)
     const appRunStub = this.sandbox.stub(this.app, 'listen').returns(httpServer)
     this.logger.info = this.sandbox.spy()
