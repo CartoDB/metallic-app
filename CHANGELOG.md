@@ -1,5 +1,10 @@
 # Metallic App ChangeLog
 
+## v0.4.0 (2017-04-09)
+
+ - Update dependencies
+
+
 ## v0.3.0 (2017-04-06)
 
  - Fix default port value, rely on OS to choose an available port
