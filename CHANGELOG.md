@@ -1,5 +1,11 @@
 # Metallic App ChangeLog
 
+## v0.5.0 (2017-06-06)
+
+ - Update dependencies
+ - Add package-lock.json
+
+
 ## v0.4.0 (2017-04-09)
 
  - Update dependencies
