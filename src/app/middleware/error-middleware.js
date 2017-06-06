@@ -7,7 +7,7 @@ export default class ErrorMiddleware extends Middleware {
         await next()
       } catch (err) {
         ctx.log.error(err)
-        throw err // delegates to koa's default error middleware
+        ctx.throw(err) // delegates to koa's default error middleware
       }
     }
   }
