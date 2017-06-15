@@ -9,7 +9,7 @@ import ResponseTimeMiddleware from './app/middleware/response-time-middleware'
 import HttpServer from './http-server'
 
 export default class HttpServerFactory extends FactoryInterface {
-  static create (metrics, logger, options) {
+  static create ({ metrics, logger, options }) {
     options = {
       port: 0,
       ...options
