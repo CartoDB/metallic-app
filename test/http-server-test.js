@@ -4,6 +4,7 @@ import EventEmitter from 'events'
 import { ListenerInterface } from 'metallic-listeners'
 import { RunnerInterface } from 'metallic-interfaces'
 import { LoggerInterface } from 'metallic-logger'
+import { NotReadyError } from 'metallic-errors'
 import HttpServer from '../src/http-server'
 
 class Listener extends ListenerInterface {}
@@ -58,17 +59,23 @@ describe('server', function () {
     }
   })
 
-  it('.run() should fail when app is not redy', function () {
+  it('.run() should fail when app is not redy', async function () {
     const appRunStub = this.sandbox.stub(this.app, 'listen').returns(null)
 
-    return this.httpServer.run()
-      .catch(function () {
-        assert.ok(appRunStub.calledOnce)
-      })
+    try {
+      await this.httpServer.run()
+    } catch (error) {
+      assert.ok(error instanceof NotReadyError)
+      assert.ok(appRunStub.calledOnce)
+    }
   })
 
-  it('.close() should stop even though http-server is not listening', function () {
-    return this.httpServer.close()
+  it('.close() should stop even though http-server is not listening', async function () {
+    try {
+      await this.httpServer.close()
+    } catch (error) {
+      assert.ifError(error)
+    }
   })
 
   it('.close() should stop successfully when http-server is listening', async function () {

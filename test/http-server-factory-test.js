@@ -6,8 +6,14 @@ import MetricsFactory from 'metallic-metrics'
 describe('http-server-factory', function () {
   it('.create() should return a HttpServer instance', function () {
     const logger = undefined
-    const metrics = MetricsFactory.create()
-    const httpServer = HttpServerFactory.create(metrics, logger, { port: 3000 })
+    const metrics = MetricsFactory.create({ logger })
+    const httpServer = HttpServerFactory.create({
+      metrics,
+      logger,
+      options: {
+        port: 3000
+      }
+    })
 
     assert.ok(httpServer instanceof RunnerInterface)
   })
