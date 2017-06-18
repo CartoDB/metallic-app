@@ -9,7 +9,7 @@ export default class HttpServerLoggerMixin {
       async run () {
         try {
           const httpServer = await super.run()
-          this.logger.info('Server started on port', this.httpServer.address().port)
+          this.logger.info('Server started on port', httpServer.address().port)
           return httpServer
         } catch (err) {
           this.logger.error('Server failed on linstening', err)
