@@ -10,6 +10,10 @@ export default class HttpServer extends RunnerInterface {
     this.httpServer = null
   }
 
+  get provider () {
+    return this.app.provider
+  }
+
   run () {
     return new Promise((resolve, reject) => {
       this.httpServer = this.app.listen(this.port)
