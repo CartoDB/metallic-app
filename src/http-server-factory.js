@@ -6,6 +6,7 @@ import ErrorMiddleware from './app/middleware/error-middleware'
 import RequestIdMiddleware from './app/middleware/request-id-middleware'
 import LogMiddleware from './app/middleware/log-middleware'
 import ResponseTimeMiddleware from './app/middleware/response-time-middleware'
+import HttpServerLoggerMixin from './http-server-logger-mixin'
 import HttpServer from './http-server'
 
 export default class HttpServerFactory extends FactoryInterface {
@@ -29,6 +30,8 @@ export default class HttpServerFactory extends FactoryInterface {
 
     const app = new App(koa, middlewares)
 
-    return new HttpServer(app, port, logger)
+    const LoggedHttpServer = HttpServerLoggerMixin.mix(HttpServer)
+
+    return new LoggedHttpServer({ app, port, logger })
   }
 }
