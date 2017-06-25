@@ -1,5 +1,13 @@
 # Metallic App ChangeLog
 
+## v0.6.0 (2017-mm-dd)
+
+ - Update dependencies
+ - Use mixin pattern to log http-server activity
+ - Expose app provider
+ - Use object as constructor params
+
+
 ## v0.5.0 (2017-06-06)
 
  - Update dependencies
