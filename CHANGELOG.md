@@ -1,5 +1,10 @@
 # Metallic App ChangeLog
 
+## v0.7.0 (2017-07-02)
+
+ - Improved error middleware: now do NOT rely on koa's default error middleware
+
+
 ## v0.6.0 (2017-06-25)
 
  - Update dependencies
