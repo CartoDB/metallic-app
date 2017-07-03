@@ -18,9 +18,6 @@ export default class ErrorMiddleware extends Middleware {
 
         ctx.log.error(err, `Error ${err.status}: ${err.message}`)
 
-        // application
-        ctx.app.emit('error', err, ctx)
-
         // accepted types
         switch (ctx.accepts('text', 'json')) {
           case 'text':
