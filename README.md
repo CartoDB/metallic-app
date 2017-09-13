@@ -52,7 +52,7 @@ A metallic-logger's instance. Further documentation: [metallic-logger](https://g
 ## Features
 
 - Proper error handling
-- Identifies every request with an unique identifier setting a custom header `X-Request-ID` and accesible by `ctx.state.requestId`
+- Identifies every request with a unique identifier setting a custom header `X-Request-ID` and accesible by `ctx.state.requestId`
 - Adds response time header `X-Response-Time`
 - Request/Response logging
 - Provides an accessor to `metrics` in request/reponse context
