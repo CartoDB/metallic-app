@@ -1,7 +1,7 @@
 import MiddlewareInterface from './middleware-interface'
 
 export default class Middleware extends MiddlewareInterface {
-  constructor (options = {}) {
+  constructor () {
     super()
     this.name = new.target.name
   }
