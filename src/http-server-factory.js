@@ -23,14 +23,19 @@ export default class HttpServerFactory extends FactoryInterface {
     koa.context.metrics = metrics
 
     const middlewares = new AppMiddlewares()
-      .add(new ErrorMiddleware())
-      .add(new RequestIdMiddleware())
-      .add(new LogMiddleware(logger))
-      .add(new ResponseTimeMiddleware())
+
+    middlewares.add(new RequestIdMiddleware())
+
+    if (logger) {
+      middlewares.add(new LogMiddleware(logger))
+    }
+
+    middlewares.add(new ErrorMiddleware())
+    middlewares.add(new ResponseTimeMiddleware())
 
     const app = new App(koa, middlewares)
 
-    const LoggedHttpServer = HttpServerLoggerMixin.mix(HttpServer)
+    const LoggedHttpServer = logger ? HttpServerLoggerMixin.mix(HttpServer) : HttpServer
 
     return new LoggedHttpServer({ app, port, logger })
   }

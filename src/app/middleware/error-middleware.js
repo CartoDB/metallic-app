@@ -16,8 +16,6 @@ export default class ErrorMiddleware extends Middleware {
       } catch (err) {
         ctx.status = typeof err.status === 'number' ? err.status : 500
 
-        ctx.log.error(err, `Error ${err.status}: ${err.message}`)
-
         // accepted types
         switch (ctx.accepts('text', 'json')) {
           case 'text':
@@ -38,6 +36,8 @@ export default class ErrorMiddleware extends Middleware {
             }
             break
         }
+
+        throw err
       }
     }
   }
