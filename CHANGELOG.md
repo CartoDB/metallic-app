@@ -1,5 +1,12 @@
 # Metallic App ChangeLog
 
+## v0.8.0 (2017-10-29)
+
+ - Do not build log-middleware when logger is not provided
+ - Do not emit error to application
+ - Add support for Travis CI
+
+
 ## v0.7.0 (2017-07-02)
 
  - Improved error middleware: now do NOT rely on koa's default error middleware
