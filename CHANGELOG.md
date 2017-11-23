@@ -1,6 +1,6 @@
 # Metallic App ChangeLog
 
-## v0.9.0 (2017-mm-dd)
+## v0.9.0 (2017-11-23)
 
  - Update deps:
    + koa: 2.4.1
