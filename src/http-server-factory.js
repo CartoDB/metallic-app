@@ -10,7 +10,7 @@ import HttpServerLoggerMixin from './http-server-logger-mixin'
 import HttpServer from './http-server'
 
 export default class HttpServerFactory extends FactoryInterface {
-  static create ({ metrics, logger, options }) {
+  static create ({ metrics, logger, options } = {}) {
     options = {
       port: 0,
       ...options
@@ -20,7 +20,9 @@ export default class HttpServerFactory extends FactoryInterface {
     const koa = new Koa()
 
     // add a reference to metrics from ctx
-    koa.context.metrics = metrics
+    if (metrics) {
+      koa.context.metrics = metrics
+    }
 
     const middlewares = new AppMiddlewares()
 
