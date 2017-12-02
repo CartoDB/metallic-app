@@ -32,8 +32,8 @@ export default class HttpServerFactory extends FactoryInterface {
       middlewares.add(new LogMiddleware(logger))
     }
 
-    middlewares.add(new ErrorMiddleware())
     middlewares.add(new ResponseTimeMiddleware())
+    middlewares.add(new ErrorMiddleware())
 
     const app = new App(koa, middlewares)
 

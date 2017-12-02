@@ -12,9 +12,11 @@ export default class LogMiddleware extends Middleware {
         ctx.log = this.logger.child(ctx.state.requestId)
         ctx.log.info({ req: ctx.request })
         await next()
-        ctx.log.info({ res: ctx.response })
       } catch (err) {
         ctx.log.error(err, `Error ${err.status}: ${err.message}`)
+        throw err
+      } finally {
+        ctx.log.info({ res: ctx.response })
       }
     }
   }
