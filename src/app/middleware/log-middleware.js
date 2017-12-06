@@ -1,7 +1,7 @@
 import Middleware from './middleware'
 
 export default class LogMiddleware extends Middleware {
-  constructor (logger) {
+  constructor ({ logger }) {
     super()
     this.logger = logger
   }

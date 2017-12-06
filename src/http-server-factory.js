@@ -5,6 +5,7 @@ import AppMiddlewares from './app/middleware/app-middlewares'
 import ErrorMiddleware from './app/middleware/error-middleware'
 import RequestIdMiddleware from './app/middleware/request-id-middleware'
 import LogMiddleware from './app/middleware/log-middleware'
+import MetricsMiddleware from './app/middleware/metrics-middleware'
 import ResponseTimeMiddleware from './app/middleware/response-time-middleware'
 import HttpServerLoggerMixin from './http-server-logger-mixin'
 import HttpServer from './http-server'
@@ -29,7 +30,11 @@ export default class HttpServerFactory extends FactoryInterface {
     middlewares.add(new RequestIdMiddleware())
 
     if (logger) {
-      middlewares.add(new LogMiddleware(logger))
+      middlewares.add(new LogMiddleware({ logger }))
+    }
+
+    if (metrics) {
+      middlewares.add(new MetricsMiddleware({ metrics }))
     }
 
     middlewares.add(new ResponseTimeMiddleware())
