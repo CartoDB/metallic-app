@@ -1,5 +1,14 @@
 # Metallic App ChangeLog
 
+## v0.10.0 (2017-12-10)
+
+ - Change travis configuration
+ - Improve middleware error handling and logging by ordering them properly
+ - Use empty object as default argument in factory
+ - Ignore coverage while publishing
+ - Improve test & build commands
+
+
 ## v0.9.0 (2017-11-23)
 
  - Update deps:
