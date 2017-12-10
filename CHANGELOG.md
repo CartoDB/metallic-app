@@ -1,5 +1,10 @@
 # Metallic App ChangeLog
 
+## v0.10.1 (2017-12-10)
+
+ - Fix regression: add middleware to avoid koa's default error handling
+
+
 ## v0.10.0 (2017-12-10)
 
  - Change travis configuration
