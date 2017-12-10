@@ -2,6 +2,7 @@ import { FactoryInterface } from 'metallic-interfaces'
 import App from './app/app'
 import Koa from 'koa'
 import AppMiddlewares from './app/middleware/app-middlewares'
+import CatchErrorMiddleware from './app/middleware/catch-error-middleware'
 import ErrorMiddleware from './app/middleware/error-middleware'
 import RequestIdMiddleware from './app/middleware/request-id-middleware'
 import LogMiddleware from './app/middleware/log-middleware'
@@ -26,6 +27,8 @@ export default class HttpServerFactory extends FactoryInterface {
     }
 
     const middlewares = new AppMiddlewares()
+
+    middlewares.add(new CatchErrorMiddleware())
 
     middlewares.add(new RequestIdMiddleware())
 
