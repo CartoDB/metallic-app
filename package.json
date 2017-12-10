@@ -1,6 +1,6 @@
 {
   "name": "metallic-app",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Koa application for CARTO services",
   "main": "lib/index.js",
   "repository": {
